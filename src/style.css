@@ -9,14 +9,22 @@ html {
 body {
   margin: 0;
   min-height: 100%;
+  background-image: url(image/swimmers.jpeg);
   background-color: #f1e6eb;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #2b303a;
+}
+.opacity {
+  opacity: 0.8;
 }
 
 h1 {
   text-align: center;
   font-family: Monospace;
-  margin: 1rem 0 3rem 0;
+  font-size: 60px;
+  margin: 2rem 0 3rem 0;
 }
 
 main {
@@ -30,6 +38,7 @@ section {
   border: thin solid #7c7c7c;
   border-radius: 0.3rem;
   margin-bottom: 3rem;
+  background-color: rgb(203, 242, 252);
 
   display: flex;
   flex-direction: column;
@@ -62,9 +71,9 @@ fieldset i {
 }
 
 fieldset i.add {
-  color: green;
+  color: rgb(25, 120, 102);
 }
 
 fieldset i.subtract {
-  color: #f64545;
+  color: #c70a0a;
 }
