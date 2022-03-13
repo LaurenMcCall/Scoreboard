@@ -16,6 +16,15 @@ const teamOneMinusButton = document.querySelector('i.subtract')
 const teamOneScore = document.querySelector('h3')
 console.log(teamOneScore)
 
+function handleClickOnTeamOnePlusButton() {
+  console.log('I clicked on team one plus button')
+}
+teamOnePlusButton?.addEventListener('click', handleClickOnTeamOnePlusButton)
+
+function handleClickOnTeamOneMinusButton() {
+  console.log('I clicked on team one minus button')
+}
+teamOneMinusButton?.addEventListener('click', handleClickOnTeamOneMinusButton)
 // teamOnePlusButton?.addEventListener('click', (e) => {
 //   console.log(e)
 // })
