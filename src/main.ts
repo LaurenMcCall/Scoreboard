@@ -7,9 +7,6 @@ import './style.css'
 
 // Assign click events to the buttons to update the corresponding values on the page.
 // The score buttons should adjust the current score by a "hard-coded" value.
-// function buttonClick(event)
-// let scoreCounter = 0
-// scoreCounter++
 
 const teamOnePlusButton = document.querySelector('i')
 const teamOneMinusButton = document.querySelector('i.subtract')
@@ -27,6 +24,10 @@ function handleClickOnTeamOnePlusButton() {
 teamOnePlusButton?.addEventListener('click', handleClickOnTeamOnePlusButton)
 
 function handleClickOnTeamOneMinusButton() {
+  if (teamOneScore === 0) {
+    console.debug('ooops!')
+    return
+  }
   teamOneScore--
 
   if (teamOneScoreText) {
