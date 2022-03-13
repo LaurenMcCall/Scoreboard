@@ -1,22 +1,19 @@
 import './style.css'
 
 console.clear()
-// Assign an event to the input fields to automatically
-// change the team's name as the user types.
-// QUESTION: would this be a window prompt and then assigning that input
-// to the h2?
-
-// Assign click events to the buttons to update the corresponding values on the page.
-// The score buttons should adjust the current score by a "hard-coded" value.
 
 const teamOnePlusButton = document.querySelector('.team1 i.add')
 const teamOneMinusButton = document.querySelector('.team1 i.subtract')
 const teamOneScoreText = document.querySelector('.team1 h3')
+const teamOneNameInput = document.querySelector('.team1 input')
+const teamOneNameText = document.querySelector('.team1 h2')
 let teamOneScore = 0
 
 const teamTwoPlusButton = document.querySelector('.team2 i.add')
 const teamTwoMinusButton = document.querySelector('.team2 i.subtract')
 const teamTwoScoreText = document.querySelector('.team2 h3')
+const teamTwoNameInput = document.querySelector('.team2 input')
+const teamTwoNameText = document.querySelector('.team2 h2')
 let teamTwoScore = 0
 
 function handleClickOnTeamOnePlusButton() {
@@ -45,6 +42,25 @@ function handleClickOnTeamOneMinusButton() {
 
 teamOneMinusButton?.addEventListener('click', handleClickOnTeamOneMinusButton)
 
+function teamOneNameInputChange(event: Event) {
+  // ADD guard clause to protect 'Team 1' from disappearing after deleted text.
+  // if (teamOneNameText === null) {
+  //   // console.debug('ooops!')
+  //   teamOneNameText.textContent = 'Team 1'
+  // }
+  const inputThatWasChanged = event.target
+
+  if (inputThatWasChanged instanceof HTMLInputElement) {
+    const textThatWasInput = inputThatWasChanged.value
+
+    if (teamOneNameText) {
+      teamOneNameText.textContent = textThatWasInput
+    }
+  }
+}
+teamOneNameInput?.addEventListener('input', teamOneNameInputChange)
+
+// Starts Team Two
 function handleClickOnTeamTwoPlusButton() {
   teamTwoScore++
 
@@ -71,19 +87,20 @@ function handleClickOnTeamTwoMinusButton() {
 
 teamTwoMinusButton?.addEventListener('click', handleClickOnTeamTwoMinusButton)
 
-// teamOnePlusButton?.addEventListener('click', (e) => {
-//   console.log(e)
-// })
+function teamTwoNameInputChange(event: Event) {
+  // ADD guard clause to protect 'Team 1' from disappearing after deleted text.
+  // if (teamOneNameText === null) {
+  //   // console.debug('ooops!')
+  //   teamOneNameText.textContent = 'Team 1'
+  // }
+  const inputThatWasChanged = event.target
 
-// greenButtonOnPage.addEventListener('click', function () {
-//   console.log('Plus one point')
-// })
-// function clickButton(event: MouseEvent){
-//   const thingClickedOn= event.target
-//   if(thingClickedOn instanceof HTML)
-// }
+  if (inputThatWasChanged instanceof HTMLInputElement) {
+    const textThatWasInput = inputThatWasChanged.value
 
-// const buttonClickedOn = document.querySelector('h3')
-// if (buttonClickedOn instanceof HTMLHeadingElement) {
-//   buttonClickedOn.textContent = `${scoreCounter}`
-// }
+    if (teamTwoNameText) {
+      teamTwoNameText.textContent = textThatWasInput
+    }
+  }
+}
+teamTwoNameInput?.addEventListener('input', teamTwoNameInputChange)
