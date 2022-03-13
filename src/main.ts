@@ -17,6 +17,11 @@ const teamTwoNameText = document.querySelector('.team2 h2')
 let teamTwoScore = 0
 
 function handleClickOnTeamOnePlusButton() {
+  if (teamOneScore === 21) {
+    console.debug('ooops!')
+
+    return
+  }
   teamOneScore++
 
   if (teamOneScoreText) {
@@ -62,6 +67,11 @@ teamOneNameInput?.addEventListener('input', teamOneNameInputChange)
 
 // Starts Team Two
 function handleClickOnTeamTwoPlusButton() {
+  if (teamTwoScore === 21) {
+    console.debug('ooops!')
+
+    return
+  }
   teamTwoScore++
 
   if (teamTwoScoreText) {
