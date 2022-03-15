@@ -9,7 +9,6 @@ const teamOneNameInput = document.querySelector('.team1 input')
 const teamOneNameText = document.querySelector('.team1 h2')
 const winnerMessage = document.querySelector('h1')
 let teamOneScore = 0
-let winningTeam = ''
 
 const teamTwoPlusButton = document.querySelector('.team2 i.add')
 const teamTwoMinusButton = document.querySelector('.team2 i.subtract')
