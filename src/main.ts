@@ -170,5 +170,8 @@ function clickOnResetButton() {
   if (teamTwoNameInput) {
     teamTwoNameInput.textContent = 'Team 2 Name'
   }
+  if (winnerMessage) {
+    winnerMessage!.innerHTML = 'Synchronized Score Board'
+  }
 }
 resetButton?.addEventListener('click', clickOnResetButton)
