@@ -33,7 +33,6 @@ function handleClickOnTeamOnePlusButton() {
 
   if (teamOneScore === 2) {
     console.debug('ooops!')
-    // QUESTION winnerMessage not displaying variable in h1
     if (teamOneNameText) {
       let winningTeam = teamOneNameText
       console.log(winningTeam)
@@ -69,7 +68,6 @@ teamOneMinusButton?.addEventListener('click', handleClickOnTeamOneMinusButton)
 
 // Team One Name Input
 function teamOneNameInputChange(event: Event) {
-  // QUESTION: ADD guard clause to protect 'Team 1' from disappearing after deleted text.
   console.log(teamOneNameInput)
 
   const inputThatWasChanged = event.target
@@ -95,7 +93,6 @@ function handleClickOnTeamTwoPlusButton() {
 
   if (teamTwoScore === 2) {
     console.debug('ooops!')
-    // QUESTION winnerMessage not displaying variable in h1
     if (teamTwoNameText) {
       let winningTeam = teamTwoNameText
       console.log(winningTeam)
@@ -131,11 +128,6 @@ teamTwoMinusButton?.addEventListener('click', handleClickOnTeamTwoMinusButton)
 
 // Team Two Name Input
 function teamTwoNameInputChange(event: Event) {
-  // ADD guard clause to protect 'Team 1' from disappearing after deleted text.
-  // if (teamOneNameText === null) {
-  //   // console.debug('ooops!')
-  //   teamOneNameText.textContent = 'Team 1'
-  // }
   console.log(teamTwoNameInput)
 
   const inputThatWasChanged = event.target
@@ -172,7 +164,6 @@ function clickOnResetButton() {
   if (teamTwoNameText) {
     teamTwoNameText.textContent = 'Team 2'
   }
-  // QUESTION: this doesn't work
   if (teamOneNameInput) {
     teamOneNameInput.textContent = 'Team 1 Name'
   }
