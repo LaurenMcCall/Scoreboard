@@ -5,34 +5,46 @@ console.clear()
 const teamOnePlusButton = document.querySelector('.team1 i.add')
 const teamOneMinusButton = document.querySelector('.team1 i.subtract')
 const teamOneScoreText = document.querySelector('.team1 h3')
-const teamOneNameInput = document.querySelector('.team1 input')
+const teamOneNameInput = <HTMLInputElement>(
+  document.querySelector('.team1 input')
+)
 const teamOneNameText = document.querySelector('.team1 h2')
 const winnerMessage = document.querySelector('h1')
+const freshInputs = document.querySelectorAll('input')!
+console.log(freshInputs)
+freshInputs.forEach((input) => (input.value = ''))
+
 let teamOneScore = 0
 
 const teamTwoPlusButton = document.querySelector('.team2 i.add')
 const teamTwoMinusButton = document.querySelector('.team2 i.subtract')
 const teamTwoScoreText = document.querySelector('.team2 h3')
-const teamTwoNameInput = document.querySelector('.team2 input')
+const teamTwoNameInput = <HTMLInputElement>(
+  document.querySelector('.team2 input')
+)
 const teamTwoNameText = document.querySelector('.team2 h2')
 let teamTwoScore = 0
 
 // Team One Plus Button
 function handleClickOnTeamOnePlusButton() {
+  if (teamOneScoreText) {
+    teamOneScoreText.textContent = `${teamOneScore}`
+  }
+
   if (teamOneScore === 2) {
     console.debug('ooops!')
     // QUESTION winnerMessage not displaying variable in h1
     if (teamOneNameText) {
       let winningTeam = teamOneNameText
-      winnerMessage!.textContent = `${winningTeam} won!!`
+      console.log(winningTeam)
+      winnerMessage!.textContent = `${winningTeam.innerHTML} won!!`
     }
     return
   }
-
   teamOneScore++
 
-  if (teamOneScoreText) {
-    teamOneScoreText.textContent = `${teamOneScore}`
+  if (teamOneScore >= 2) {
+    return
   }
 }
 
@@ -58,35 +70,43 @@ teamOneMinusButton?.addEventListener('click', handleClickOnTeamOneMinusButton)
 // Team One Name Input
 function teamOneNameInputChange(event: Event) {
   // QUESTION: ADD guard clause to protect 'Team 1' from disappearing after deleted text.
-  // if (teamOneNameText) {
-  //   teamOneNameText.textContent = 'Team 1'
-  //   return
-  // }
+  console.log(teamOneNameInput)
 
   const inputThatWasChanged = event.target
 
   if (inputThatWasChanged instanceof HTMLInputElement) {
     const textThatWasInput = inputThatWasChanged.value
-
-    if (teamOneNameText) {
-      teamOneNameText.textContent = textThatWasInput
+    if (teamOneNameInput.value === '') {
+      teamOneNameText!.innerHTML = 'Team 1'
+    } else {
+      teamOneNameText!.textContent = textThatWasInput
       return
     }
   }
 }
+
 teamOneNameInput?.addEventListener('input', teamOneNameInputChange)
 
 // Team Two Plus Button
 function handleClickOnTeamTwoPlusButton() {
+  if (teamTwoScoreText) {
+    teamTwoScoreText.textContent = `${teamTwoScore}`
+  }
+
   if (teamTwoScore === 2) {
     console.debug('ooops!')
-
+    // QUESTION winnerMessage not displaying variable in h1
+    if (teamTwoNameText) {
+      let winningTeam = teamTwoNameText
+      console.log(winningTeam)
+      winnerMessage!.textContent = `${winningTeam.innerHTML} won!!`
+    }
     return
   }
   teamTwoScore++
 
-  if (teamTwoScoreText) {
-    teamTwoScoreText.textContent = `${teamTwoScore}`
+  if (teamTwoScore >= 2) {
+    return
   }
 }
 
@@ -116,13 +136,17 @@ function teamTwoNameInputChange(event: Event) {
   //   // console.debug('ooops!')
   //   teamOneNameText.textContent = 'Team 1'
   // }
+  console.log(teamTwoNameInput)
+
   const inputThatWasChanged = event.target
 
   if (inputThatWasChanged instanceof HTMLInputElement) {
     const textThatWasInput = inputThatWasChanged.value
-
-    if (teamTwoNameText) {
-      teamTwoNameText.textContent = textThatWasInput
+    if (teamTwoNameInput.value === '') {
+      teamTwoNameText!.innerHTML = 'Team 2'
+    } else {
+      teamTwoNameText!.textContent = textThatWasInput
+      return
     }
   }
 }
@@ -134,6 +158,7 @@ const resetButton = document.querySelector('aside')
 function clickOnResetButton() {
   teamOneScore = 0
   teamTwoScore = 0
+  freshInputs.forEach((input) => (input.value = ''))
 
   if (teamOneScoreText) {
     teamOneScoreText.textContent = `${teamOneScore}`
